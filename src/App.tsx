@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+import Header from './components/header';
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
   // canvas 颗粒绘制
   useEffect(() => {
     // 获取dom
@@ -151,6 +152,7 @@ function App() {
   return (
     <div className="App">
       <div className="layout">
+        <Header />
         <canvas id="canvas"></canvas>
       </div>
     </div>

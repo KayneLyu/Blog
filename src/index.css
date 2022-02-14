@@ -7,8 +7,8 @@ html,body {
   height: 100%;
 }
 #waifu-tool {
-  color: #fff;
+  color: #fff!important;
 }
 #waifu-tool span {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.5)!important; 
 }
