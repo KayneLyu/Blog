@@ -48,27 +48,9 @@
   }
 } */
 
-
 :root {
   --theme-color: #303133;
-  --theme-background: #FFFFFF;
-}
-
-/* .dark {
-  --theme-color: #eee;
-  --theme-background: #333;
-}
-.light {
-  --theme-color: #333;
-  --theme-background: #fff;
-} */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  font-weight: normal;
+  --theme-background: #ffffff;
 }
 
 html {
@@ -76,35 +58,51 @@ html {
   min-width: 100vw;
   color: var(--theme-color);
   background: var(--theme-background);
-
 }
 
-
-html.darks{
-  --theme-color: #E5EAF3;
+html.dark {
+  --theme-color: #e5eaf3;
   --theme-background: #141414;
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  height: auto;
+  width: 100vw;
+  animation: none;
+  mix-blend-mode: normal;
+}
 
+html.dark::view-transition-old(root) {
+  z-index: 2147483646;
+}
+
+html.dark::view-transition-new(root) {
+  z-index: 1;
+}
+
+html::view-transition-old(root) {
+  z-index: 1;
+}
+
+html::view-transition-new(root) {
+  z-index: 2147483646;
+}
+
+/* *,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+} */
 
 body {
   min-height: 100vh;
-  transition:
-    color 0.5s,
-    background-color 0.5s;
+  transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   font-size: 15px;
   text-rendering: optimizeLegibility;

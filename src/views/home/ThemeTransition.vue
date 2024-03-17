@@ -1,11 +1,13 @@
 <template>
-    <div class="switch_box" @click="updateView">
+    <div class="switch_box">
         <input class="el-switch__input" type="checkbox" role="switch" aria-checked="true" aria-disabled="false" name=""
             true-value="true" false-value="false" id="el-id-8057-6">
     </div>
+
+    <button @click='updateView'>切换主题</button>
 </template>
 
-<script setup lang="ts" >
+<script setup lang="ts">
 declare global {
     interface Document {
         startViewTransition: (fc: Function) => {
@@ -13,11 +15,11 @@ declare global {
         };
     }
 }
-let isDark = true
+let isDark = false
 function changeTheme() {
     // 切换页面主题
     isDark = !isDark;
-    document.documentElement.classList.toggle("darks");
+    document.documentElement.classList.toggle("dark");
 }
 function updateView(event: MouseEvent) {
     //在不支持的浏览器里不做动画
@@ -68,30 +70,6 @@ function updateView(event: MouseEvent) {
 }
 
 
-
-::view-transition-old(root),
-::view-transition-new(root) {
-    height: auto;
-    width: 100vw;
-    animation: none;
-    mix-blend-mode: normal;
-}
-
-html.darks::view-transition-old(root) {
-    z-index: 2147483646!important;
-}
-
-html.darks::view-transition-new(root) {
-    z-index: 1!important;
-}
-
-html::view-transition-old(root) {
-    z-index: 1!important;
-}
-
-html::view-transition-new(root) {
-    z-index: 2147483646!important;
-}
 
 /* Alternative custom animation style */
 </style>
