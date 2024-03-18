@@ -25,12 +25,13 @@
 }
 
 i {
+  color: #000;
   display: flex;
   place-items: center;
   place-content: center;
-  width: 32px;
-  height: 32px;
-
+  width: 60px;
+  height: 60px;
+  font-size: 50px;
   color: var(--color-text);
 }
 

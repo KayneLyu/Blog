@@ -1,13 +1,19 @@
 <template>
-    <div class="switch_box">
-        <input class="el-switch__input" type="checkbox" role="switch" aria-checked="true" aria-disabled="false" name=""
-            true-value="true" false-value="false" id="el-id-8057-6">
+    <div @click="updateView" class="switch_box">
+        <input v-model="isDark" class="switch_input" type="checkbox" />
+        <span class="slider round">
+            <i>
+                <component :is="isDark ? MoonIcon : SunIcon" />
+            </i>
+        </span>
     </div>
-
-    <button @click='updateView'>切换主题</button>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+import SunIcon from '@/components/icons/Sun.vue'
+import MoonIcon from '@/components/icons/Moon.vue'
+
 declare global {
     interface Document {
         startViewTransition: (fc: Function) => {
@@ -15,10 +21,12 @@ declare global {
         };
     }
 }
-let isDark = false
+
+let isDark = ref(false)
+
 function changeTheme() {
     // 切换页面主题
-    isDark = !isDark;
+    isDark.value = !isDark.value;
     document.documentElement.classList.toggle("dark");
 }
 function updateView(event: MouseEvent) {
@@ -44,13 +52,13 @@ function updateView(event: MouseEvent) {
         //开始动画
         document.documentElement.animate(
             {
-                clipPath: isDark ? [...clipPath].reverse() : clipPath,
+                clipPath: isDark.value ? [...clipPath].reverse() : clipPath,
                 // clipPath:[...clipPath].reverse() ,
             },
             {
                 duration: 400,
                 easing: "ease-in",
-                pseudoElement: isDark
+                pseudoElement: isDark.value
                     ? "::view-transition-old(root)"
                     : "::view-transition-new(root)",
             }
@@ -61,15 +69,61 @@ function updateView(event: MouseEvent) {
 
 <style scoped>
 .switch_box {
+    position: relative;
     display: inline-flex;
     align-items: center;
     position: relative;
-    font-size: 14px;
-    line-height: 20px;
     vertical-align: middle;
+    width: 50px;
+    height: 24px;
 }
 
+.switch_input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
 
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #F2F2F2;
+    transition: .4s;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+}
 
-/* Alternative custom animation style */
+.slider i {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    top: 2px;
+    left: 2px;
+    transition: .4s;
+    border-radius: 50%;
+    font-size: 18px;
+
+}
+
+input:checked+.slider {
+    border:none;
+    background-color: #2C2C2C;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #000000;
+}
+
+input:checked+.slider i {
+    transform: translateX(25px);
+}
+
+.slider.round i {
+    border-radius: 50%;
+}
 </style>
