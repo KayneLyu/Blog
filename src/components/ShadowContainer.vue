@@ -15,6 +15,6 @@
     border-radius: 8px;
     box-sizing: border-box;
     padding: 20px;
-    background-color: rgba(212, 212, 212, 0.5);
+    background-color: var(--container-back);
 }
-</style>
+</style> 

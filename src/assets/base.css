@@ -53,6 +53,9 @@
   --theme-background: #ffffff;
   --back-blur: 15px;
   --html-font: 16px;
+  --container-back: rgb(237 237 237 / 50%);
+  --tag-back: #ebebeb;
+  --border-color: #a9a9a9;
 }
 * {
   margin: 0;
@@ -69,6 +72,9 @@ html {
 html.dark {
   --theme-color: #e5eaf3;
   --theme-background: #141414;
+  --container-back: rgb(109 109 109 / 50%);
+  --tag-back: #000;
+  --border-color: #fff;
 }
 
 ::view-transition-old(root),

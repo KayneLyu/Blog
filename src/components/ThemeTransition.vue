@@ -53,7 +53,6 @@ function updateView(event: MouseEvent) {
         document.documentElement.animate(
             {
                 clipPath: isDark.value ? [...clipPath].reverse() : clipPath,
-                // clipPath:[...clipPath].reverse() ,
             },
             {
                 duration: 400,
@@ -91,7 +90,7 @@ function updateView(event: MouseEvent) {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #F2F2F2;
+    background-color: #f9f9f9;
     transition: .4s;
     border-radius: 12px;
     border: 1px solid #ccc;
@@ -111,7 +110,7 @@ function updateView(event: MouseEvent) {
 }
 
 input:checked+.slider {
-    border:none;
+    border: none;
     background-color: #2C2C2C;
 }
 
@@ -120,7 +119,7 @@ input:focus+.slider {
 }
 
 input:checked+.slider i {
-    transform: translateX(25px);
+    transform: translateX(24px);
 }
 
 .slider.round i {

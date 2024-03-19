@@ -7,17 +7,28 @@
                 </div>
                 <div class="kan_position">
                     <ShadowContainer>
-                        位置
+                        <p><i>
+                                <PositionIcon />
+                            </i> China-Guangdong</p>
+                        <p><i>
+                                <UniversityIcon />
+                            </i> Hubei University</p>
                     </ShadowContainer>
                 </div>
                 <div class="kan_labels">
                     <ShadowContainer>
-                        标签
+                        <ul>
+                            <li v-for="(item, index) in tagLists" :key="index">
+                                {{ item }}
+                            </li>
+                        </ul>
                     </ShadowContainer>
                 </div>
                 <div class="kan_news">
                     <ShadowContainer>
-                        动态
+                        <div class="moment_container">
+                            <MomentComponent />
+                        </div>
                     </ShadowContainer>
                 </div>
             </aside>
@@ -37,6 +48,9 @@
                 </p>
             </div>
             <div class="kan_useful">
+                <dialog>
+                    sss
+                </dialog>
                 <ul>
                     <li v-for="(item, index) in usefulLists" @click="item.methods" :key="index">
                         <i>
@@ -50,7 +64,9 @@
                     </li>
                 </ul>
             </div>
-            <div></div>
+            <div class="snake_container">
+                <img src="@/assets/snake.svg" alt="">
+            </div>
             <div></div>
             <div></div>
             <section></section>
@@ -65,18 +81,24 @@
 import { ref } from 'vue';
 import ThemeTransition from '@/components/ThemeTransition.vue';
 import ShadowContainer from '@/components/ShadowContainer.vue';
-import WelcomeItem from '@/components/WelcomeItem.vue'
+import MomentComponent from './moment.vue';
+
 import GithubIcon from '@/components/icons/github.vue'
 import JobIcon from '@/components/icons/Job.vue'
 import WordsIcon from '@/components/icons/Words.vue'
 import EmailIcon from '@/components/icons/Email.vue'
+import WeChatIcon from '@/components/icons/Wechat.vue'
+import PositionIcon from '@/components/icons/Position.vue'
+import UniversityIcon from '@/components/icons/University.vue'
 
 import avatar from '@/assets/images/avatar.jpg';
 
 const toGithub = () => {
     console.log(1);
 }
+const showDialog = () => {
 
+}
 const usefulLists = [
     {
         icon: GithubIcon,
@@ -86,8 +108,21 @@ const usefulLists = [
         icon: EmailIcon,
         methods: toGithub
     },
+    {
+        icon: WeChatIcon,
+        methods: showDialog
+    },
 ]
 
+const tagLists = [
+    'MusicLover',
+    'CodeWriter',
+    'BasketballEnthusiast',
+    'Gamer',
+    'InternetAddict',
+    'CarEnthusiast',
+    'LifelongLearner'
+]
 
 </script>
 
@@ -118,8 +153,8 @@ main {
     margin-top: 50px;
     max-width: 1150px;
     grid-template-columns: 23% 77%;
-    grid-template-rows: 100px 80px 60px 180px 150px 150px 150px;
-    min-height: 800px;
+    grid-template-rows: 100px 80px 60px 165px 150px 150px 150px;
+    min-height: 1000px;
 }
 
 aside {
@@ -164,16 +199,49 @@ header {
 
 .kan_position {
     margin: 15px 0;
-    height: 100px;
+
+    p {
+        font-size: 14px;
+
+        i {
+            margin-right: 5px;
+            vertical-align: middle;
+            font-size: 20px;
+        }
+    }
 }
 
 .kan_labels {
-    height: 140px;
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+            padding: 3px 5px;
+            margin: 5px 0;
+            margin-right: 8px;
+            font-size: 13px;
+            background-color: var(--tag-back);
+            border-radius: 5px;
+
+            &:hover {
+                color: #d06cff;
+                cursor: pointer;
+            }
+        }
+    }
 }
 
 .kan_news {
     margin: 15px 0;
     height: 300px;
+    .moment_container {
+        height: 100%;
+        overflow: auto;
+        &::-webkit-scrollbar {
+            width: 0;
+        }
+    }
 }
 
 .kan_description {
@@ -188,8 +256,6 @@ header {
     }
 
     p {
-        vertical-align: middle;
-
         i {
             font-size: 24px;
             color: red;
@@ -203,29 +269,44 @@ header {
     }
 }
 
-ul {
-    display: flex;
+.kan_useful {
     margin-top: 20px;
 
-    li {
-        margin-right: 10px;
-        padding: 10px;
-        background-color: #d5d5d580;
-        box-sizing: border-box;
-        height: 50px;
-        min-width: 50px;
-        text-align: center;
-        cursor: pointer;
-        border-radius: 6px;
+    ul {
+        display: flex;
 
-        i {
-            font-size: 30px;
+        li {
+            margin-right: 10px;
+            padding: 10px;
+            background-color: var(--container-back);
+            box-sizing: border-box;
+            height: 50px;
+            min-width: 50px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 6px;
+
+            i {
+                font-size: 30px;
+            }
+
+            .switch_container {
+                display: flex;
+                height: 100%;
+                align-items: center;
+            }
         }
-        .switch_container {
-            display: flex;
-            height: 100%;
-            align-items: center;
-        }
+    }
+}
+
+
+.snake_container {
+    margin-top: 20px;
+    text-align: left;
+
+    img {
+        height: 100%;
+        object-fit: contain;
     }
 }
 </style>
