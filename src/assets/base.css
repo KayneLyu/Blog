@@ -49,10 +49,10 @@
 } */
 
 :root {
-  --theme-color: #303133;
-  --theme-background: #ffffff;
   --back-blur: 15px;
   --html-font: 16px;
+  --theme-color: #303133;
+  --theme-background: #ffffff;
   --container-back: rgb(237 237 237 / 50%);
   --tag-back: #ebebeb;
   --border-color: #a9a9a9;

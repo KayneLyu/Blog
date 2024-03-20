@@ -10,9 +10,9 @@
     <div class="content">
         <ul>
             <li v-for="(item, index) in contentLists" :key="index">
-                <a :href="item.url" class="content_container">
-                    <P>{{ item.title }}</P>
-                    <P>{{ item.description }}</P>
+                <a :href="item.url" class="content_container" target="_blank">
+                    <p>{{ item.title }}</p>
+                    <p>{{ item.description }}</p>
                     <div class="lang_types">
                         <p v-for="(type, key) in item.lang" :key="key">{{ type }}</p>
                     </div>
@@ -31,8 +31,8 @@ type IContent = {
     contentLists: Array<{
         title: string,
         description: string,
-        lang: string[],
         url: string
+        lang?: string[],
     }>
 }
 
@@ -72,7 +72,7 @@ const props = defineProps<IContent>()
             }
 
             p {
-                font-size: 16px;
+                font-size: 14px;
             }
 
             .content_container>p:first-child {

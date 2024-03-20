@@ -22,7 +22,7 @@ declare global {
     }
 }
 
-let isDark = ref(false)
+let isDark = ref(true)
 
 function changeTheme() {
     // 切换页面主题

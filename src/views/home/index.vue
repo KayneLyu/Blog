@@ -53,7 +53,8 @@
                         sss
                     </dialog>
                     <ul>
-                        <li v-for="(item, index) in usefulLists" @click="item.methods" :key="index">
+                        <li v-for="(item, index) in usefulLists" @click="item.methods(item.url)"
+                            :key="index">
                             <i>
                                 <component :is="item.icon" />
                             </i>
@@ -74,7 +75,7 @@
                     <ProjectComponent :contentLists="projectLists" :icon="ProjectIcon" typeName="Project" />
                 </div>
                 <div class="kan_project">
-                    <ProjectComponent :contentLists="projectLists" :icon="RecordIcon" typeName="Record" />
+                    <ProjectComponent :contentLists="recordList" :icon="RecordIcon" typeName="Record" />
                 </div>
 
                 <div class="kan_skills">
@@ -91,6 +92,9 @@
             </div>
         </main>
     </div>
+    <footer>
+
+    </footer>
 </template>
 
 <script setup lang='ts' >
@@ -113,8 +117,18 @@ import SkillsIcon from '@/components/icons/Skills.vue'
 
 import avatar from '@/assets/images/avatar.jpg';
 
-const toGithub = () => {
-    console.log(1);
+const toGithub = (url?: string) => {
+    if (url) {
+        window.open(url)
+    } else {
+        // 创建一个包含邮件地址的 mailto 链接
+        var emailAddress = "kangzaiwt@gmail.com";
+        var subject = "Hello Kayne";
+        var body = "聊聊吧";
+        var mailtoLink = "mailto:" + emailAddress + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        // 使用 window.open() 打开链接
+        window.open(mailtoLink);
+    }
 }
 const showDialog = () => {
 
@@ -122,7 +136,8 @@ const showDialog = () => {
 const usefulLists = [
     {
         icon: GithubIcon,
-        methods: toGithub
+        methods: toGithub,
+        url: 'https://github.com/KayneLyu'
     },
     {
         icon: EmailIcon,
@@ -147,7 +162,7 @@ const tagLists = [
 const projectLists = ref([
     {
         title: 'Blog',
-        description: 'Emotion record',
+        description: 'Emotion Record',
         lang: ['Vue'],
         url: 'https://github.com/KayneLyu/Blog'
     },
@@ -162,6 +177,30 @@ const projectLists = ref([
         description: 'A game modifier client',
         lang: ['Electron', 'React'],
         url: 'https://github.com/KayneLyu/redbuff'
+    },
+    {
+        title: 'Material System',
+        description: 'Preparing...',
+        lang: ['Electron', 'React'],
+        url: ''
+    }
+])
+
+const recordList = ref([
+    {
+        title: '博客',
+        description: '记录废仔日常 (开发中...)',
+        url: ''
+    },
+    {
+        title: '学习记录',
+        description: '偷学技能点 (开发中...)',
+        url: ''
+    },
+    {
+        title: '实验室',
+        description: '放点有趣的页面 (开发中...)',
+        url: ''
     }
 ])
 
@@ -357,6 +396,7 @@ header {
 
 .kan_skills {
     margin-top: 30px;
+
     p {
         font-style: italic;
         font-weight: 700;
