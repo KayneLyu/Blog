@@ -183,7 +183,7 @@ const projectLists = ref([
         title: 'Material System',
         description: 'Preparing...',
         lang: ['Electron', 'React'],
-        url: ''
+        url: '#'
     }
 ])
 
@@ -191,20 +191,20 @@ const recordList = ref([
     {
         title: '博客',
         description: '记录废仔日常 (开发中...)',
-        url: '',
         lang: ['上次更新：2019.05.23'],
+        url: '#',
     },
     {
         title: '学习记录',
         description: '偷学技能点 (开发中...)',
-        url: '',
         lang: ['上次更新：2024.02.23'],
+        url: '#',
     },
     {
         title: '实验室',
         description: '放点有趣的页面 (开发中...)',
-        url: '',
         lang: ['上次更新：2023.07.01'],
+        url: '#',
     }
 ])
 
@@ -228,7 +228,7 @@ const recordList = ref([
     background-size: cover;
     background-position: center;
     transform: scale(1.1);
-    filter: blur(var(--back-blur)) brightness(90%);
+    filter: blur(var(--back-blur)) brightness(80%);
 }
 
 main {

@@ -51,9 +51,11 @@
 :root {
   --back-blur: 16px;
   --html-font: 16px;
-  --theme-color: #161616;
+  /* --theme-color: #161616; */
+  --theme-color: #e5eaf3;
   --theme-background: #ffffff;
-  --container-back: rgb(235 235 235 / 50%);
+  /* --container-back: rgb(235 235 235 / 50%); */
+  --container-back: rgb(217 217 217 / 12%);
   --tag-back: #ebebeb2e;
   --border-color: #a9a9a9;
 }
