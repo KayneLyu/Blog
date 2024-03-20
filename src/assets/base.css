@@ -49,12 +49,12 @@
 } */
 
 :root {
-  --back-blur: 15px;
+  --back-blur: 16px;
   --html-font: 16px;
-  --theme-color: #303133;
+  --theme-color: #161616;
   --theme-background: #ffffff;
-  --container-back: rgb(237 237 237 / 50%);
-  --tag-back: #ebebeb;
+  --container-back: rgb(235 235 235 / 50%);
+  --tag-back: #ebebeb2e;
   --border-color: #a9a9a9;
 }
 * {
@@ -72,8 +72,8 @@ html {
 html.dark {
   --theme-color: #e5eaf3;
   --theme-background: #141414;
-  --container-back: rgb(109 109 109 / 50%);
-  --tag-back: #000;
+  --container-back: rgb(39 39 39 / 50%);
+  --tag-back: #161616;
   --border-color: #fff;
 }
 

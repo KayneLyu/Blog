@@ -6,3 +6,8 @@
             p-id="111312"></path>
     </svg>
 </template>
+<style scoped>
+.icon {
+  fill: var(--theme-color);
+}
+</style>

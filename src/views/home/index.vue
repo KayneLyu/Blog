@@ -53,8 +53,7 @@
                         sss
                     </dialog>
                     <ul>
-                        <li v-for="(item, index) in usefulLists" @click="item.methods(item.url)"
-                            :key="index">
+                        <li v-for="(item, index) in usefulLists" @click="item.methods(item.url)" :key="index">
                             <i>
                                 <component :is="item.icon" />
                             </i>
@@ -93,11 +92,13 @@
         </main>
     </div>
     <footer>
-
+        <p>
+            Kayne © 2024
+        </p>
     </footer>
 </template>
 
-<script setup lang='ts' >
+<script setup lang='ts'>
 import { ref } from 'vue';
 import ThemeTransition from '@/components/ThemeTransition.vue';
 import ShadowContainer from '@/components/ShadowContainer.vue';
@@ -190,17 +191,20 @@ const recordList = ref([
     {
         title: '博客',
         description: '记录废仔日常 (开发中...)',
-        url: ''
+        url: '',
+        lang: ['上次更新：2019.05.23'],
     },
     {
         title: '学习记录',
         description: '偷学技能点 (开发中...)',
-        url: ''
+        url: '',
+        lang: ['上次更新：2024.02.23'],
     },
     {
         title: '实验室',
         description: '放点有趣的页面 (开发中...)',
-        url: ''
+        url: '',
+        lang: ['上次更新：2023.07.01'],
     }
 ])
 
@@ -219,11 +223,12 @@ const recordList = ref([
     width: 100%;
     height: 100%;
     z-index: -666;
+    // background-image: url('@/assets/images/home_bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     transform: scale(1.1);
-    filter: blur(var(--back-blur));
+    filter: blur(var(--back-blur)) brightness(90%);
 }
 
 main {
@@ -415,5 +420,17 @@ header {
         height: 85px;
         object-fit: contain;
     }
+}
+
+footer {
+    position: fixed;
+    width: 100%;
+    height: 38px;
+    line-height: 38px;
+    bottom: 0;
+    left: 0;
+    background-color: #00000038;
+    text-align: center;
+    font-weight: 600;
 }
 </style>

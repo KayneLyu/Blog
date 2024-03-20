@@ -11,6 +11,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import backgroundBg from '@/assets/images/home_bg.jpg';
 import SunIcon from '@/components/icons/Sun.vue'
 import MoonIcon from '@/components/icons/Moon.vue'
 
@@ -28,6 +29,12 @@ function changeTheme() {
     // 切换页面主题
     isDark.value = !isDark.value;
     document.documentElement.classList.toggle("dark");
+    const bg = document.querySelector('.kan_fixed') as HTMLElement;
+    if (isDark.value) {
+        bg.style.backgroundImage = 'none'
+        return
+    }
+    bg.style.backgroundImage = `url(${backgroundBg})`
 }
 function updateView(event: MouseEvent) {
     //在不支持的浏览器里不做动画
@@ -90,7 +97,7 @@ function updateView(event: MouseEvent) {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #f9f9f9;
+    background-color: transparent;
     transition: .4s;
     border-radius: 12px;
     border: 1px solid #ccc;
