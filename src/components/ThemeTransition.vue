@@ -101,7 +101,7 @@ function updateView(event: MouseEvent) {
     content: "";
     height: 20px;
     width: 20px;
-    top: 2px;
+    top: 1px;
     left: 2px;
     transition: .4s;
     border-radius: 50%;

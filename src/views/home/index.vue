@@ -32,48 +32,64 @@
                     </ShadowContainer>
                 </div>
             </aside>
-            <header>Hi, I'm <span>Kayne</span></header>
-            <div class="kan_description">
-                <p>
-                    <i>
-                        <JobIcon />
-                    </i>
-                    A <span>Frontend</span> Developer
-                </p>
-                <p>
-                    <i>
-                        <WordsIcon />
-                    </i>
-                    The <span>magic</span> you are looking for is in the work you're <span>avoiding</span>
-                </p>
-            </div>
-            <div class="kan_useful">
-                <dialog>
-                    sss
-                </dialog>
-                <ul>
-                    <li v-for="(item, index) in usefulLists" @click="item.methods" :key="index">
+            <div>
+                <header>Hi, I'm <span>Kayne</span></header>
+                <div class="kan_description">
+                    <p>
                         <i>
-                            <component :is="item.icon" />
+                            <JobIcon />
                         </i>
-                    </li>
-                    <li>
-                        <div class="switch_container">
-                            <ThemeTransition />
-                        </div>
-                    </li>
-                </ul>
+                        A <span>Frontend</span> Developer
+                    </p>
+                    <p>
+                        <i>
+                            <WordsIcon />
+                        </i>
+                        The <span>magic</span> you are looking for is in the work you're <span>avoiding</span>
+                    </p>
+                </div>
+                <div class="kan_useful">
+                    <dialog>
+                        sss
+                    </dialog>
+                    <ul>
+                        <li v-for="(item, index) in usefulLists" @click="item.methods" :key="index">
+                            <i>
+                                <component :is="item.icon" />
+                            </i>
+                        </li>
+                        <li>
+                            <div class="switch_container">
+                                <ThemeTransition />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="snake_container">
+                    <img src="@/assets/snake.svg" alt="">
+                </div>
+
+
+                <div class="kan_project">
+                    <ProjectComponent :contentLists="projectLists" :icon="ProjectIcon" typeName="Project" />
+                </div>
+                <div class="kan_project">
+                    <ProjectComponent :contentLists="projectLists" :icon="RecordIcon" typeName="Record" />
+                </div>
+
+                <div class="kan_skills">
+                    <div class="icon">
+                        <p>
+                            <i>
+                                <SkillsIcon />
+                            </i>
+                            Skills
+                        </p>
+                    </div>
+                    <img src="../../assets/skills.svg" alt="">
+                </div>
             </div>
-            <div class="snake_container">
-                <img src="@/assets/snake.svg" alt="">
-            </div>
-            <div></div>
-            <div></div>
-            <section></section>
         </main>
-        <!-- <header>
-            <ThemeTransition />
-        </header> -->
     </div>
 </template>
 
@@ -82,6 +98,7 @@ import { ref } from 'vue';
 import ThemeTransition from '@/components/ThemeTransition.vue';
 import ShadowContainer from '@/components/ShadowContainer.vue';
 import MomentComponent from './moment.vue';
+import ProjectComponent from "./project.vue";
 
 import GithubIcon from '@/components/icons/github.vue'
 import JobIcon from '@/components/icons/Job.vue'
@@ -90,6 +107,9 @@ import EmailIcon from '@/components/icons/Email.vue'
 import WeChatIcon from '@/components/icons/Wechat.vue'
 import PositionIcon from '@/components/icons/Position.vue'
 import UniversityIcon from '@/components/icons/University.vue'
+import ProjectIcon from '@/components/icons/Project.vue'
+import RecordIcon from '@/components/icons/Record.vue'
+import SkillsIcon from '@/components/icons/Skills.vue'
 
 import avatar from '@/assets/images/avatar.jpg';
 
@@ -124,6 +144,27 @@ const tagLists = [
     'LifelongLearner'
 ]
 
+const projectLists = ref([
+    {
+        title: 'Blog',
+        description: 'Emotion record',
+        lang: ['Vue'],
+        url: 'https://github.com/KayneLyu/Blog'
+    },
+    {
+        title: 'Chat Room',
+        description: 'A LAN chat room',
+        lang: ['React', 'Socket.IO'],
+        url: 'https://github.com/KayneLyu/chat-room'
+    },
+    {
+        title: 'Red Buff',
+        description: 'A game modifier client',
+        lang: ['Electron', 'React'],
+        url: 'https://github.com/KayneLyu/redbuff'
+    }
+])
+
 </script>
 
 <style scoped lang="less">
@@ -139,7 +180,6 @@ const tagLists = [
     width: 100%;
     height: 100%;
     z-index: -666;
-    // background-image: url('@/assets/images/home_bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -149,11 +189,12 @@ const tagLists = [
 
 main {
     display: grid;
+    padding: 0 10px;
     margin: 0 auto;
     margin-top: 50px;
     max-width: 1150px;
     grid-template-columns: 23% 77%;
-    grid-template-rows: 100px 80px 60px 165px 150px 150px 150px;
+    // grid-template-rows: 100px 80px 60px 165px 150px 150px 150px;
     min-height: 1000px;
 }
 
@@ -163,10 +204,6 @@ aside {
     /* background-color: pink; */
     margin-right: 50px;
     min-width: 200px;
-}
-
-section {
-    // background-color: purple;
 }
 
 @keyframes huerotate {
@@ -217,10 +254,10 @@ header {
         flex-wrap: wrap;
 
         li {
-            padding: 3px 5px;
+            padding: 3px 4px;
             margin: 5px 0;
             margin-right: 8px;
-            font-size: 13px;
+            font-size: 14px;
             background-color: var(--tag-back);
             border-radius: 5px;
 
@@ -235,9 +272,11 @@ header {
 .kan_news {
     margin: 15px 0;
     height: 300px;
+
     .moment_container {
         height: 100%;
         overflow: auto;
+
         &::-webkit-scrollbar {
             width: 0;
         }
@@ -246,6 +285,7 @@ header {
 
 .kan_description {
     font-size: 20px;
+    margin-top: 50px;
 
     span {
         display: inline-block;
@@ -272,6 +312,7 @@ header {
 .kan_useful {
     margin-top: 20px;
 
+    // padding-left: 12px;
     ul {
         display: flex;
 
@@ -299,13 +340,39 @@ header {
     }
 }
 
-
 .snake_container {
     margin-top: 20px;
     text-align: left;
+    width: 80%;
 
     img {
-        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+}
+
+.kan_project {
+    margin-top: 30px;
+}
+
+.kan_skills {
+    margin-top: 30px;
+    p {
+        font-style: italic;
+        font-weight: 700;
+        font-size: 26px;
+
+        i {
+            vertical-align: middle;
+            font-size: 26px;
+            margin-right: 5px;
+        }
+    }
+
+    img {
+        margin-left: 15px;
+        margin-top: 20px;
+        height: 85px;
         object-fit: contain;
     }
 }

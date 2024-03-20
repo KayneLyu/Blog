@@ -17,6 +17,7 @@ import EmotionIcon from '@/components/icons/Emotion.vue';
 import StudyIcon from '@/components/icons/Study.vue'
 import UpdateIcon from '@/components/icons/Update.vue'
 import CodeIcon from '@/components/icons/Coding.vue'
+import UnknownIcon from '@/components/icons/Unknown.vue'
 
 const momentLists = [
     {
@@ -26,8 +27,13 @@ const momentLists = [
     },
     {
         type: EmotionIcon,
-        title: '说说',
+        title: '说说ssssssssss',
         date: '2024.01.30',
+    },
+    {
+        type: UnknownIcon,
+        title: '...',
+        date: '',
     },
     {
         type: StudyIcon,
@@ -44,13 +50,15 @@ const momentLists = [
         title: '说说',
         date: '2024.01.30',
     },
+    
     {
         type: CodeIcon,
         title: '写下代码',
         date: '2024.01.30',
-    },
+    }
 ]
 momentLists.reverse()
+
 </script>
 
 <style scoped lang="less">
@@ -65,7 +73,7 @@ ul {
         z-index: -9;
         min-height: 100%;
         position: absolute;
-        left: 15px;
+        left: 11px;
         top: 0;
         border-left: 2px solid var(--border-color)
     }
@@ -73,19 +81,42 @@ ul {
     li {
         display: flex;
         align-items: center;
-        height: 70px;
+        height: 56px;
 
         i {
-            font-size: 30px;
-            margin-right: 10px;
+            font-size: 22px;
         }
 
         p {
-            max-width: 70px;
+            max-width: 100px;
             font-size: 14px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
         }
+
         p:last-of-type {
             font-size: 13px;
         }
+
+        div {
+            position: relative;
+            margin-left: 10px;
+            padding: 3px 10px;
+            border-radius: 6px;
+            background-color: var(--tag-back);
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 30%;
+                left: -10px;
+                width: 0;
+                height: 0;
+                border: 6px solid;
+                border-color: transparent var(--tag-back) transparent transparent;
+            }
+        }
     }
-}</style>
+}
+</style>
