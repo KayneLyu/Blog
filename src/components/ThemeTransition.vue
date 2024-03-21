@@ -14,6 +14,8 @@ import { ref } from 'vue';
 import backgroundBg from '@/assets/images/home_bg.jpg';
 import SunIcon from '@/components/icons/Sun.vue'
 import MoonIcon from '@/components/icons/Moon.vue'
+import snake from '@/assets/snake.svg';
+import snakeDark from '@/assets/snake-dark.svg';
 
 declare global {
     interface Document {
@@ -30,12 +32,16 @@ function changeTheme() {
     isDark.value = !isDark.value;
     document.documentElement.classList.toggle("dark");
     const bg = document.querySelector('.kan_fixed') as HTMLElement;
+    const snakeAnimate = document.querySelector('.snake_animate') as HTMLImageElement;
     if (isDark.value) {
         bg.style.backgroundImage = 'none'
+        snakeAnimate.src= snakeDark
         return
     }
     bg.style.backgroundImage = `url(${backgroundBg})`
+    snakeAnimate.src= snake
 }
+
 function updateView(event: MouseEvent) {
     //在不支持的浏览器里不做动画
     if (!document.startViewTransition) {

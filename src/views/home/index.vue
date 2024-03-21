@@ -66,7 +66,7 @@
                     </ul>
                 </div>
                 <div class="snake_container">
-                    <img src="@/assets/snake.svg" alt="">
+                    <img class="snake_animate" src="@/assets/snake-dark.svg" alt="">
                 </div>
 
 
