@@ -27,7 +27,7 @@ const momentLists = [
     },
     {
         type: EmotionIcon,
-        title: '说说ssssssssss',
+        title: '今天心情不错~',
         date: '2024.01.30',
     },
     {
@@ -65,9 +65,6 @@ momentLists.reverse()
 ul {
     position: relative;
     width: 100%;
-
-    // height: 100%;
-    // overflow-y: scroll;
     &::after {
         content: '';
         z-index: -9;
@@ -82,7 +79,7 @@ ul {
         display: flex;
         align-items: center;
         height: 56px;
-
+        cursor: pointer;
         i {
             font-size: 22px;
         }

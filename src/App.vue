@@ -5,7 +5,11 @@ import Home from './views/home/index.vue';
 </script>
 
 <template>
-    <Home />
+  <RouterView v-slot="{ Component }">
+    <transition name="fade" mode="out-in">
+      <component :is="Component" />
+    </transition>
+  </RouterView>
 </template>
 
 <style scoped>

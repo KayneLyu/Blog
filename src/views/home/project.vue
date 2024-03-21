@@ -9,8 +9,8 @@
     </div>
     <div class="content">
         <ul>
-            <li v-for="(item, index) in contentLists" :key="index">
-                <a :href="item.url" class="content_container" target="_blank">
+            <li v-for="(item, index) in contentLists" :key="index" :class="item.type == 'project' && 'project'" >
+                <a @click="openLink(item.outLink,item.url)" href="javascript:void(0);" class="content_container" >
                     <p>{{ item.title }}</p>
                     <p>{{ item.description }}</p>
                     <div class="lang_types">
@@ -24,6 +24,7 @@
 
 <script setup lang='ts' >
 import type { Component } from 'vue';
+import { useRouter} from 'vue-router'
 
 type IContent = {
     icon: Component,
@@ -32,11 +33,23 @@ type IContent = {
         title: string,
         description: string,
         url: string
+        outLink: boolean,
+        type: string,
         lang?: string[],
     }>
 }
 
+const router = useRouter()
+
 const props = defineProps<IContent>()
+
+const openLink = (isOutLink:boolean, url:string) => {
+    if(isOutLink) {
+        window.open(url)
+    } else {
+        // router.push('/blog')
+    }
+}
 
 </script>
 
@@ -101,7 +114,21 @@ const props = defineProps<IContent>()
             }
         }
     }
-
-
+}
+@media screen and (max-width: 1100px) {
+    ul {
+        flex-wrap: wrap;
+        li {
+            width: 45%!important;
+        }
+    }
+}
+@media screen and (max-width: 500px) {
+    ul {
+        flex-wrap: wrap;
+        .project {
+            width: 90%!important;
+        }
+    }
 }
 </style>

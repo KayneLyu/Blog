@@ -1,101 +1,102 @@
 <template>
-    <div class="kan_fixed"></div>
-    <div class="home_container">
-        <main>
-            <aside>
-                <div class="avatar">
-                </div>
-                <div class="kan_position">
-                    <ShadowContainer>
-                        <p><i>
-                                <PositionIcon />
-                            </i> China-Guangdong</p>
-                        <p><i>
-                                <UniversityIcon />
-                            </i> Hubei University</p>
-                    </ShadowContainer>
-                </div>
-                <div class="kan_labels">
-                    <ShadowContainer>
-                        <ul>
-                            <li v-for="(item, index) in tagLists" :key="index">
-                                {{ item }}
-                            </li>
-                        </ul>
-                    </ShadowContainer>
-                </div>
-                <div class="kan_news">
-                    <ShadowContainer>
-                        <div class="moment_container">
-                            <MomentComponent />
-                        </div>
-                    </ShadowContainer>
-                </div>
-            </aside>
-            <div>
-                <header>Hi, I'm <span>Kayne</span></header>
-                <div class="kan_description">
-                    <p>
-                        <i>
-                            <JobIcon />
-                        </i>
-                        A <span>Frontend</span> Developer
-                    </p>
-                    <p>
-                        <i>
-                            <WordsIcon />
-                        </i>
-                        The <span>magic</span> you are looking for is in the work you're <span>avoiding</span>
-                    </p>
-                </div>
-                <div class="kan_useful">
-                    <dialog>
-                        sss
-                    </dialog>
-                    <ul>
-                        <li v-for="(item, index) in usefulLists" @click="item.methods(item.url)" :key="index">
-                            <i>
-                                <component :is="item.icon" />
-                            </i>
-                        </li>
-                        <li>
-                            <div class="switch_container">
-                                <ThemeTransition />
+    <div class="kayne_home">
+        <div class="kan_fixed"></div>
+        <div class="home_container">
+            <main>
+                <aside>
+                    <div class="avatar">
+                    </div>
+                    <div class="kan_position">
+                        <ShadowContainer>
+                            <p><i>
+                                    <PositionIcon />
+                                </i> China-Guangdong</p>
+                            <p><i>
+                                    <UniversityIcon />
+                                </i> Hubei University</p>
+                        </ShadowContainer>
+                    </div>
+                    <div class="kan_labels">
+                        <ShadowContainer>
+                            <ul>
+                                <li v-for="(item, index) in tagLists" :key="index">
+                                    {{ item }}
+                                </li>
+                            </ul>
+                        </ShadowContainer>
+                    </div>
+                    <div class="kan_news">
+                        <ShadowContainer>
+                            <div class="moment_container">
+                                <MomentComponent />
                             </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="snake_container">
-                    <img class="snake_animate" src="@/assets/snake-dark.svg" alt="">
-                </div>
-
-
-                <div class="kan_project">
-                    <ProjectComponent :contentLists="projectLists" :icon="ProjectIcon" typeName="Project" />
-                </div>
-                <div class="kan_project">
-                    <ProjectComponent :contentLists="recordList" :icon="RecordIcon" typeName="Record" />
-                </div>
-
-                <div class="kan_skills">
-                    <div class="icon">
+                        </ShadowContainer>
+                    </div>
+                </aside>
+                <div>
+                    <header>Hi, I'm <span>Kayne</span></header>
+                    <div class="kan_description">
                         <p>
                             <i>
-                                <SkillsIcon />
+                                <JobIcon />
                             </i>
-                            Skills
+                            A <span>Frontend</span> Developer
+                        </p>
+                        <p>
+                            <i>
+                                <WordsIcon />
+                            </i>
+                            The <span>magic</span> you are looking for is in the work you're <span>avoiding</span>
                         </p>
                     </div>
-                    <img src="../../assets/skills.svg" alt="">
+                    <div class="kan_useful">
+                        <dialog>
+                            sss
+                        </dialog>
+                        <ul>
+                            <li v-for="(item, index) in usefulLists" @click="item.methods(item.url)" :key="index">
+                                <i>
+                                    <component :is="item.icon" />
+                                </i>
+                            </li>
+                            <li>
+                                <div class="switch_container">
+                                    <ThemeTransition />
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="snake_container">
+                        <img class="snake_animate" src="@/assets/snake-dark.svg" alt="">
+                    </div>
+                    <div class="kan_project">
+                        <ProjectComponent :contentLists="projectLists" :icon="ProjectIcon" typeName="Project" />
+                    </div>
+                    <div class="kan_project kan_record">
+                        <ProjectComponent :contentLists="recordList" :icon="RecordIcon" typeName="Record" />
+                    </div>
+                    <div class="kan_skills">
+                        <div class="icon">
+                            <p>
+                                <i>
+                                    <SkillsIcon />
+                                </i>
+                                Skills
+                            </p>
+                        </div>
+                        <div class="skill_svg_container">
+                            <img src="../../assets/skills.svg" alt="">
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </main>
+            </main>
+        </div>
+        <footer>
+            <p>
+                Kayne © 2024
+            </p>
+        </footer>
     </div>
-    <footer>
-        <p>
-            Kayne © 2024
-        </p>
-    </footer>
 </template>
 
 <script setup lang='ts'>
@@ -116,17 +117,15 @@ import ProjectIcon from '@/components/icons/Project.vue'
 import RecordIcon from '@/components/icons/Record.vue'
 import SkillsIcon from '@/components/icons/Skills.vue'
 
-import avatar from '@/assets/images/avatar.jpg';
-
-const toGithub = (url?: string) => {
+const openUrl = (url?: string) => {
     if (url) {
         window.open(url)
     } else {
         // 创建一个包含邮件地址的 mailto 链接
-        var emailAddress = "kangzaiwt@gmail.com";
-        var subject = "Hello Kayne";
-        var body = "聊聊吧";
-        var mailtoLink = "mailto:" + emailAddress + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        let emailAddress = "kangzaiwt@gmail.com";
+        let subject = "Hello Kayne";
+        let body = "聊聊吧";
+        let mailtoLink = "mailto:" + emailAddress + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
         // 使用 window.open() 打开链接
         window.open(mailtoLink);
     }
@@ -134,15 +133,16 @@ const toGithub = (url?: string) => {
 const showDialog = () => {
 
 }
+
 const usefulLists = [
     {
         icon: GithubIcon,
-        methods: toGithub,
+        methods: openUrl,
         url: 'https://github.com/KayneLyu'
     },
     {
         icon: EmailIcon,
-        methods: toGithub
+        methods: openUrl
     },
     {
         icon: WeChatIcon,
@@ -165,25 +165,34 @@ const projectLists = ref([
         title: 'Blog',
         description: 'Emotion Record',
         lang: ['Vue'],
+        outLink: true,
+        type: 'project',
         url: 'https://github.com/KayneLyu/Blog'
+    },
+    {
+        title: 'Material System',
+        description: 'Preparing...',
+        lang: ['Vue', 'Nest.JS'],
+        outLink: true,
+        type: 'project',
+        url: ''
+    },
+    
+    {
+        title: 'Red Buff',
+        description: 'A game modifier client',
+        lang: ['Electron', 'React'],
+        outLink: true,
+        type: 'project',
+        url: 'https://github.com/KayneLyu/redbuff'
     },
     {
         title: 'Chat Room',
         description: 'A LAN chat room',
         lang: ['React', 'Socket.IO'],
+        outLink: true,
+        type: 'project',
         url: 'https://github.com/KayneLyu/chat-room'
-    },
-    {
-        title: 'Red Buff',
-        description: 'A game modifier client',
-        lang: ['Electron', 'React'],
-        url: 'https://github.com/KayneLyu/redbuff'
-    },
-    {
-        title: 'Material System',
-        description: 'Preparing...',
-        lang: ['Electron', 'React'],
-        url: '#'
     }
 ])
 
@@ -192,29 +201,40 @@ const recordList = ref([
         title: '博客',
         description: '记录废仔日常 (开发中...)',
         lang: ['上次更新：2019.05.23'],
-        url: '#',
+        outLink: false,
+        type: 'record',
+        url: '',
     },
     {
         title: '学习记录',
         description: '偷学技能点 (开发中...)',
         lang: ['上次更新：2024.02.23'],
-        url: '#',
+        outLink: false,
+        type: 'record',
+        url: '',
     },
     {
         title: '实验室',
         description: '放点有趣的页面 (开发中...)',
         lang: ['上次更新：2023.07.01'],
-        url: '#',
+        outLink: false,
+        type: 'record',
+        url: '',
     }
 ])
 
 </script>
 
 <style scoped lang="less">
-.home_container {
+.kayne_home {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
     overflow: auto;
+}
+.home_container {
     width: 100%;
-    height: 100vh;
 }
 
 .kan_fixed {
@@ -238,14 +258,15 @@ main {
     margin-top: 50px;
     max-width: 1150px;
     grid-template-columns: 23% 77%;
+    grid-template-rows: auto;
     // grid-template-rows: 100px 80px 60px 165px 150px 150px 150px;
-    min-height: 1000px;
 }
+
+
 
 aside {
     /* 简写 */
-    grid-row: 1 / 7;
-    /* background-color: pink; */
+    grid-row: 1 / 6;
     margin-right: 50px;
     min-width: 200px;
 }
@@ -387,7 +408,7 @@ header {
 .snake_container {
     margin-top: 20px;
     text-align: left;
-    width: 80%;
+    width: 93%;
 
     img {
         width: 100%;
@@ -401,6 +422,8 @@ header {
 
 .kan_skills {
     margin-top: 30px;
+    margin-bottom: 30px;
+    width: 100%;
 
     p {
         font-style: italic;
@@ -413,24 +436,49 @@ header {
             margin-right: 5px;
         }
     }
-
+    .skill_svg_container {
+        padding-left: 15px;
+        box-sizing: border-box;
+    }
     img {
-        margin-left: 15px;
         margin-top: 20px;
-        height: 85px;
+        box-sizing: border-box;
+        width: 100%;
         object-fit: contain;
     }
 }
 
 footer {
-    position: fixed;
+    // position: fixed;
     width: 100%;
     height: 38px;
     line-height: 38px;
-    bottom: 0;
-    left: 0;
+    // bottom: 0;
+    // left: 0;
     background-color: #00000038;
     text-align: center;
     font-weight: 600;
 }
+
+@media screen and (max-width: 1100px) {
+    main {
+        grid-template-columns: 100%;
+    }
+
+    aside {
+        margin-right: 0;
+    }
+
+    .kan_position,
+    .kan_labels,
+    .kan_news {
+        display: none;
+    }
+}
+@media screen and (max-width: 386px) { 
+    header {
+        font-size: 40px;
+    }
+}
+
 </style>
