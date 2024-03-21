@@ -69,6 +69,7 @@ html {
   min-height: 100vh;
   color: var(--theme-color);
   background: var(--theme-background);
+  scrollbar-width: thin;
 }
 
 html.dark {
