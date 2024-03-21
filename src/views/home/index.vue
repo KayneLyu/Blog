@@ -69,15 +69,12 @@
                     <div class="snake_container">
                         <img src="@/assets/snake.svg" alt="">
                     </div>
-
-
                     <div class="kan_project">
                         <ProjectComponent :contentLists="projectLists" :icon="ProjectIcon" typeName="Project" />
                     </div>
-                    <div class="kan_project">
+                    <div class="kan_project kan_record">
                         <ProjectComponent :contentLists="recordList" :icon="RecordIcon" typeName="Record" />
                     </div>
-
                     <div class="kan_skills">
                         <div class="icon">
                             <p>
@@ -87,18 +84,22 @@
                                 Skills
                             </p>
                         </div>
-                        <img src="../../assets/skills.svg" alt="">
+                        <div class="skill_svg_container">
+                            <img src="../../assets/skills.svg" alt="">
+                        </div>
                     </div>
                 </div>
             </main>
         </div>
         <footer>
-
+            <p>
+                Kayne © 2024
+            </p>
         </footer>
     </div>
 </template>
 
-<script setup lang='ts' >
+<script setup lang='ts'>
 import { ref } from 'vue';
 import ThemeTransition from '@/components/ThemeTransition.vue';
 import ShadowContainer from '@/components/ShadowContainer.vue';
@@ -116,17 +117,15 @@ import ProjectIcon from '@/components/icons/Project.vue'
 import RecordIcon from '@/components/icons/Record.vue'
 import SkillsIcon from '@/components/icons/Skills.vue'
 
-// import avatar from '@/assets/images/avatar.jpg';
-
-const toGithub = (url?: string) => {
+const openUrl = (url?: string) => {
     if (url) {
         window.open(url)
     } else {
         // 创建一个包含邮件地址的 mailto 链接
-        var emailAddress = "kangzaiwt@gmail.com";
-        var subject = "Hello Kayne";
-        var body = "聊聊吧";
-        var mailtoLink = "mailto:" + emailAddress + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        let emailAddress = "kangzaiwt@gmail.com";
+        let subject = "Hello Kayne";
+        let body = "聊聊吧";
+        let mailtoLink = "mailto:" + emailAddress + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
         // 使用 window.open() 打开链接
         window.open(mailtoLink);
     }
@@ -134,15 +133,16 @@ const toGithub = (url?: string) => {
 const showDialog = () => {
 
 }
+
 const usefulLists = [
     {
         icon: GithubIcon,
-        methods: toGithub,
+        methods: openUrl,
         url: 'https://github.com/KayneLyu'
     },
     {
         icon: EmailIcon,
-        methods: toGithub
+        methods: openUrl
     },
     {
         icon: WeChatIcon,
@@ -165,25 +165,34 @@ const projectLists = ref([
         title: 'Blog',
         description: 'Emotion Record',
         lang: ['Vue'],
+        outLink: true,
+        type: 'project',
         url: 'https://github.com/KayneLyu/Blog'
+    },
+    {
+        title: 'Material System',
+        description: 'Preparing...',
+        lang: ['Vue', 'Nest.JS'],
+        outLink: true,
+        type: 'project',
+        url: ''
+    },
+    
+    {
+        title: 'Red Buff',
+        description: 'A game modifier client',
+        lang: ['Electron', 'React'],
+        outLink: true,
+        type: 'project',
+        url: 'https://github.com/KayneLyu/redbuff'
     },
     {
         title: 'Chat Room',
         description: 'A LAN chat room',
         lang: ['React', 'Socket.IO'],
+        outLink: true,
+        type: 'project',
         url: 'https://github.com/KayneLyu/chat-room'
-    },
-    {
-        title: 'Red Buff',
-        description: 'A game modifier client',
-        lang: ['Electron', 'React'],
-        url: 'https://github.com/KayneLyu/redbuff'
-    },
-    {
-        title: 'Material System',
-        description: 'Preparing...',
-        lang: ['Electron', 'React'],
-        url: ''
     }
 ])
 
@@ -191,17 +200,26 @@ const recordList = ref([
     {
         title: '博客',
         description: '记录废仔日常 (开发中...)',
-        url: ''
+        lang: ['上次更新：2019.05.23'],
+        outLink: false,
+        type: 'record',
+        url: '',
     },
     {
         title: '学习记录',
         description: '偷学技能点 (开发中...)',
-        url: ''
+        lang: ['上次更新：2024.02.23'],
+        outLink: false,
+        type: 'record',
+        url: '',
     },
     {
         title: '实验室',
         description: '放点有趣的页面 (开发中...)',
-        url: ''
+        lang: ['上次更新：2023.07.01'],
+        outLink: false,
+        type: 'record',
+        url: '',
     }
 ])
 
@@ -220,11 +238,12 @@ const recordList = ref([
     width: 100%;
     height: 100%;
     z-index: -666;
+    // background-image: url('@/assets/images/home_bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     transform: scale(1.1);
-    filter: blur(var(--back-blur));
+    filter: blur(var(--back-blur)) brightness(80%);
 }
 
 main {
@@ -234,14 +253,15 @@ main {
     margin-top: 50px;
     max-width: 1150px;
     grid-template-columns: 23% 77%;
+    grid-template-rows: auto;
     // grid-template-rows: 100px 80px 60px 165px 150px 150px 150px;
-    min-height: 1000px;
 }
+
+
 
 aside {
     /* 简写 */
-    grid-row: 1 / 7;
-    /* background-color: pink; */
+    grid-row: 1 / 6;
     margin-right: 50px;
     min-width: 200px;
 }
@@ -383,7 +403,7 @@ header {
 .snake_container {
     margin-top: 20px;
     text-align: left;
-    width: 80%;
+    width: 93%;
 
     img {
         width: 100%;
@@ -397,6 +417,8 @@ header {
 
 .kan_skills {
     margin-top: 30px;
+    margin-bottom: 60px;
+    width: 100%;
 
     p {
         font-style: italic;
@@ -409,12 +431,49 @@ header {
             margin-right: 5px;
         }
     }
-
+    .skill_svg_container {
+        padding-left: 15px;
+        box-sizing: border-box;
+    }
     img {
-        margin-left: 15px;
         margin-top: 20px;
-        height: 85px;
+        box-sizing: border-box;
+        width: 100%;
         object-fit: contain;
     }
 }
+
+footer {
+    position: fixed;
+    width: 100%;
+    height: 38px;
+    line-height: 38px;
+    bottom: 0;
+    left: 0;
+    background-color: #00000038;
+    text-align: center;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 1100px) {
+    main {
+        grid-template-columns: 100%;
+    }
+
+    aside {
+        margin-right: 0;
+    }
+
+    .kan_position,
+    .kan_labels,
+    .kan_news {
+        display: none;
+    }
+}
+@media screen and (max-width: 386px) { 
+    header {
+        font-size: 40px;
+    }
+}
+
 </style>
