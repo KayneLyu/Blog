@@ -101,7 +101,5 @@ const props = defineProps<IContent>()
             }
         }
     }
-
-
 }
 </style>

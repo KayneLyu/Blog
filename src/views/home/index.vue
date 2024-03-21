@@ -1,100 +1,101 @@
 <template>
-    <div class="kan_fixed"></div>
-    <div class="home_container">
-        <main>
-            <aside>
-                <div class="avatar">
-                </div>
-                <div class="kan_position">
-                    <ShadowContainer>
-                        <p><i>
-                                <PositionIcon />
-                            </i> China-Guangdong</p>
-                        <p><i>
-                                <UniversityIcon />
-                            </i> Hubei University</p>
-                    </ShadowContainer>
-                </div>
-                <div class="kan_labels">
-                    <ShadowContainer>
-                        <ul>
-                            <li v-for="(item, index) in tagLists" :key="index">
-                                {{ item }}
-                            </li>
-                        </ul>
-                    </ShadowContainer>
-                </div>
-                <div class="kan_news">
-                    <ShadowContainer>
-                        <div class="moment_container">
-                            <MomentComponent />
-                        </div>
-                    </ShadowContainer>
-                </div>
-            </aside>
-            <div>
-                <header>Hi, I'm <span>Kayne</span></header>
-                <div class="kan_description">
-                    <p>
-                        <i>
-                            <JobIcon />
-                        </i>
-                        A <span>Frontend</span> Developer
-                    </p>
-                    <p>
-                        <i>
-                            <WordsIcon />
-                        </i>
-                        The <span>magic</span> you are looking for is in the work you're <span>avoiding</span>
-                    </p>
-                </div>
-                <div class="kan_useful">
-                    <dialog>
-                        sss
-                    </dialog>
-                    <ul>
-                        <li v-for="(item, index) in usefulLists" @click="item.methods(item.url)"
-                            :key="index">
-                            <i>
-                                <component :is="item.icon" />
-                            </i>
-                        </li>
-                        <li>
-                            <div class="switch_container">
-                                <ThemeTransition />
+    <div>
+        <div class="kan_fixed"></div>
+        <div class="home_container">
+            <main>
+                <aside>
+                    <div class="avatar">
+                    </div>
+                    <div class="kan_position">
+                        <ShadowContainer>
+                            <p><i>
+                                    <PositionIcon />
+                                </i> China-Guangdong</p>
+                            <p><i>
+                                    <UniversityIcon />
+                                </i> Hubei University</p>
+                        </ShadowContainer>
+                    </div>
+                    <div class="kan_labels">
+                        <ShadowContainer>
+                            <ul>
+                                <li v-for="(item, index) in tagLists" :key="index">
+                                    {{ item }}
+                                </li>
+                            </ul>
+                        </ShadowContainer>
+                    </div>
+                    <div class="kan_news">
+                        <ShadowContainer>
+                            <div class="moment_container">
+                                <MomentComponent />
                             </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="snake_container">
-                    <img src="@/assets/snake.svg" alt="">
-                </div>
-
-
-                <div class="kan_project">
-                    <ProjectComponent :contentLists="projectLists" :icon="ProjectIcon" typeName="Project" />
-                </div>
-                <div class="kan_project">
-                    <ProjectComponent :contentLists="recordList" :icon="RecordIcon" typeName="Record" />
-                </div>
-
-                <div class="kan_skills">
-                    <div class="icon">
+                        </ShadowContainer>
+                    </div>
+                </aside>
+                <div>
+                    <header>Hi, I'm <span>Kayne</span></header>
+                    <div class="kan_description">
                         <p>
                             <i>
-                                <SkillsIcon />
+                                <JobIcon />
                             </i>
-                            Skills
+                            A <span>Frontend</span> Developer
+                        </p>
+                        <p>
+                            <i>
+                                <WordsIcon />
+                            </i>
+                            The <span>magic</span> you are looking for is in the work you're <span>avoiding</span>
                         </p>
                     </div>
-                    <img src="../../assets/skills.svg" alt="">
-                </div>
-            </div>
-        </main>
-    </div>
-    <footer>
+                    <div class="kan_useful">
+                        <dialog>
+                            sss
+                        </dialog>
+                        <ul>
+                            <li v-for="(item, index) in usefulLists" @click="item.methods(item.url)" :key="index">
+                                <i>
+                                    <component :is="item.icon" />
+                                </i>
+                            </li>
+                            <li>
+                                <div class="switch_container">
+                                    <ThemeTransition />
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="snake_container">
+                        <img src="@/assets/snake.svg" alt="">
+                    </div>
 
-    </footer>
+
+                    <div class="kan_project">
+                        <ProjectComponent :contentLists="projectLists" :icon="ProjectIcon" typeName="Project" />
+                    </div>
+                    <div class="kan_project">
+                        <ProjectComponent :contentLists="recordList" :icon="RecordIcon" typeName="Record" />
+                    </div>
+
+                    <div class="kan_skills">
+                        <div class="icon">
+                            <p>
+                                <i>
+                                    <SkillsIcon />
+                                </i>
+                                Skills
+                            </p>
+                        </div>
+                        <img src="../../assets/skills.svg" alt="">
+                    </div>
+                </div>
+            </main>
+        </div>
+        <footer>
+
+        </footer>
+    </div>
 </template>
 
 <script setup lang='ts' >
@@ -115,7 +116,7 @@ import ProjectIcon from '@/components/icons/Project.vue'
 import RecordIcon from '@/components/icons/Record.vue'
 import SkillsIcon from '@/components/icons/Skills.vue'
 
-import avatar from '@/assets/images/avatar.jpg';
+// import avatar from '@/assets/images/avatar.jpg';
 
 const toGithub = (url?: string) => {
     if (url) {
