@@ -36,46 +36,44 @@
 
       </div>
     </div>
+    <style>
+      .pinkman_container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        background-color: #000;
+        overflow: hidden;
+      }
+
+      .pinkman_box {
+        position: relative;
+        margin: auto;
+        width: 200px;
+      }
+
+      .pinkman {
+        display: flex;
+        justify-content: right;
+        width: 250px;
+        position: absolute;
+        z-index: 5;
+        animation: move 5s linear infinite;
+        background-color: #000;
+      }
+
+      @keyframes move {
+        from {
+          transform: translateX(-220px);
+        }
+
+        to {
+          transform: translateX(0);
+        }
+      }
+    </style>
   </div>
-  <style>
-    .pinkman_container {
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      background-color: #000;
-      overflow: hidden;
-    }
-
-    .pinkman_box {
-      position: relative;
-      margin: auto;
-      width: 200px;
-    }
-
-    .pinkman {
-      display: flex;
-      justify-content: right;
-      width: 250px;
-      position: absolute;
-      z-index: 5;
-      animation: move 5s linear infinite;
-      background-color: #000;
-    }
-
-    @keyframes move {
-      from {
-        transform: translateX(-220px);
-        /* 起始位置 */
-      }
-
-      to {
-        transform: translateX(0);
-        /* 终点位置 */
-      }
-    }
-  </style>
-  <!-- </div> -->
+  
   <script type="module" src="/src/main.ts"></script>
 </body>
 
