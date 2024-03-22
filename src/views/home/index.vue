@@ -1,5 +1,6 @@
 <template>
     <div class="kayne_home">
+        <Modal ref="dialog" />
         <div class="kan_fixed"></div>
         <div class="home_container">
             <main>
@@ -105,6 +106,7 @@ import ThemeTransition from '@/components/ThemeTransition.vue';
 import ShadowContainer from '@/components/ShadowContainer.vue';
 import MomentComponent from './moment.vue';
 import ProjectComponent from "./project.vue";
+import Modal from '@/components/modal.vue';
 
 import GithubIcon from '@/components/icons/github.vue'
 import JobIcon from '@/components/icons/Job.vue'
@@ -130,9 +132,12 @@ const openUrl = (url?: string) => {
         window.open(mailtoLink);
     }
 }
-const showDialog = () => {
 
+const dialog = ref<{ showDialog: Function, close: Function }>()
+const showDialog = () => {
+    dialog.value?.showDialog()
 }
+
 
 const usefulLists = [
     {
@@ -177,7 +182,7 @@ const projectLists = ref([
         type: 'project',
         url: ''
     },
-    
+
     {
         title: 'Red Buff',
         description: 'A game modifier client',
@@ -223,6 +228,7 @@ const recordList = ref([
     }
 ])
 
+
 </script>
 
 <style scoped lang="less">
@@ -233,6 +239,7 @@ const recordList = ref([
     justify-content: space-between;
     overflow: auto;
 }
+
 .home_container {
     width: 100%;
 }
@@ -377,7 +384,6 @@ header {
 .kan_useful {
     margin-top: 20px;
 
-    // padding-left: 12px;
     ul {
         display: flex;
 
@@ -422,7 +428,6 @@ header {
 
 .kan_skills {
     margin-top: 30px;
-    margin-bottom: 30px;
     width: 100%;
 
     p {
@@ -436,25 +441,25 @@ header {
             margin-right: 5px;
         }
     }
+
     .skill_svg_container {
         padding-left: 15px;
         box-sizing: border-box;
     }
+
     img {
         margin-top: 20px;
         box-sizing: border-box;
-        width: 100%;
+        width: 90%;
         object-fit: contain;
     }
 }
 
 footer {
-    // position: fixed;
+    margin-top: 20px;
     width: 100%;
     height: 38px;
     line-height: 38px;
-    // bottom: 0;
-    // left: 0;
     background-color: #00000038;
     text-align: center;
     font-weight: 600;
@@ -475,10 +480,10 @@ footer {
         display: none;
     }
 }
-@media screen and (max-width: 386px) { 
+
+@media screen and (max-width: 386px) {
     header {
         font-size: 40px;
     }
 }
-
 </style>

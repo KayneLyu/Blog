@@ -1,13 +1,82 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/ico.svg">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kayne</title>
-  </head>
-  <body>
-    <div id="kayne"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/ico.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kayne</title>
+</head>
+
+<body>
+  <div id="kayne">
+    <div class="pinkman_container">
+      <div class="pinkman_box">
+        <div class="pinkman">
+          <i>
+            <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+              <path fill="#FBD900">
+                <animate attributeName="d"
+                  values="M954.432477 229.629384C861.67578 102.654515 712.077327 27.572494 552.722452 27.572494 279.684065 27.572494 58.25573 244.476112 58.25573 511.858603c0 267.523888 221.428335 484.568904 494.466722 484.568904 154.264568 0 300.045291-70.698702 393.508975-191.027893L552.722452 511.858603 954.432477 229.629384 954.432477 229.629384zM634.732947 175.615576c35.632146 0 64.335819 28.279481 64.335819 63.063242 0 34.783761-28.84507 63.063242-64.335819 63.063242-35.632146 0-64.335819-28.279481-64.335819-63.063242C570.25573 203.895057 599.100801 175.615576 634.732947 175.615576L634.732947 175.615576zM634.732947 175.615576;
+                                  M462.4 27.52c-93.6 9.76-180.64 44.96-257.6 104.32-20.48 15.84-62.24 57.12-78.56 77.76-54.08 68.16-87.2 143.2-100.96 228.8-3.2 20.64-3.68 28.64-3.68 72 0 55.52 2.08 74.4 13.6 119.52 50.24 196.96 222.72 342.72 430.24 363.68 21.28 2.08 78.24 2.08 99.52 0 113.12-11.36 216.48-59.04 297.12-136.8 77.28-74.4 125.92-167.68 143.04-274.4 3.2-20.64 3.68-28.64 3.68-72 0-55.52-2.08-74.4-13.6-119.52-50.24-196.96-222.72-342.72-430.24-363.68-19.52-1.92-83.04-1.76-102.56 0.32zm153.76 149.44c30.56 8.96 50.56 39.84 44.96 69.76-4 21.12-16.64 37.76-35.52 46.72-9.6 4.64-11.68 4.96-28 4.96-15.68 0-18.56-0.48-26.72-4.32-12.8-5.92-24.32-17.12-30.56-29.92-4.8-9.76-5.12-11.52-5.12-27.36 0-15.04 0.48-17.76 4.48-25.76 13.92-28.48 46.24-42.88 76.48-34.08z"
+                  dur="0.4s" repeatCount="indefinite" alcMode="paced" />
+              </path>
+            </svg>
+          </i>
+        </div>
+        <svg id="gameCanvas" width="300" height="62" xmlns="http://www.w3.org/2000/svg">
+          <circle id="bean1" cx="60" cy="32" r="5" fill="#ff0000" />
+          <circle id="bean1" cx="80" cy="32" r="5" fill="#ff7f00" />
+          <circle id="bean1" cx="100" cy="32" r="5" fill="#ffff00" />
+          <circle id="bean1" cx="120" cy="32" r="5" fill="#00ff00" />
+          <circle id="bean1" cx="140" cy="32" r="5" fill="#00ffff" />
+          <circle id="bean1" cx="160" cy="32" r="5" fill="#0000ff" />
+          <circle id="bean1" cx="180" cy="32" r="5" fill="#8b00ff" />
+        </svg>
+
+      </div>
+    </div>
+  </div>
+  <style>
+    .pinkman_container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      background-color: #000;
+      overflow: hidden;
+    }
+
+    .pinkman_box {
+      position: relative;
+      margin: auto;
+      width: 200px;
+    }
+
+    .pinkman {
+      display: flex;
+      justify-content: right;
+      width: 250px;
+      position: absolute;
+      z-index: 5;
+      animation: move 5s linear infinite;
+      background-color: #000;
+    }
+
+    @keyframes move {
+      from {
+        transform: translateX(-220px);
+        /* 起始位置 */
+      }
+
+      to {
+        transform: translateX(0);
+        /* 终点位置 */
+      }
+    }
+  </style>
+  <!-- </div> -->
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
