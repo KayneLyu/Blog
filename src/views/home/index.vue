@@ -41,7 +41,7 @@
                             <i>
                                 <JobIcon />
                             </i>
-                            A <span>Frontend</span> Developer
+                            A <span>Front-end</span> Developer
                         </p>
                         <p>
                             <i>
